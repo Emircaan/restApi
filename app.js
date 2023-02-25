@@ -2,14 +2,14 @@ const express = require('express');
 const app = express();
 app.use(express.json());
 
-// Bir Array oluştur
+
 let tasks = [
   { id: 1, title: 'Task 1', completed: false },
   { id: 2, title: 'Task 2', completed: true },
   { id: 3, title: 'Task 3', completed: false }
 ];
 
-// GET: Tüm görevleri al
+
 app.get('/api/tasks', (req, res) => {
     res.json(tasks);
 
@@ -26,7 +26,7 @@ app.get('/tasks/:id', (req, res) => {
     res.json(task);
   });
 
-// POST: Yeni görev ekle
+
 app.post('/api/tasks', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
   const task = {
@@ -40,7 +40,7 @@ app.post('/api/tasks', (req, res) => {
   res.json(task);
 });
 
-// PUT: Görev güncelle
+
 app.put('/api/tasks/:id', (req, res) => {
     res.setHeader('Content-Type', 'application/json');
   const task = tasks.find(t => t.id === parseInt(req.params.id));
@@ -52,7 +52,7 @@ app.put('/api/tasks/:id', (req, res) => {
   res.json(task);
 });
 
-// DELETE: Görev sil
+
 app.delete('/api/tasks/:id', (req, res) => {
   const task = tasks.find(t => t.id === parseInt(req.params.id));
 
